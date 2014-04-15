@@ -34,5 +34,10 @@ if(!defined('ICEBB_ROOT'))
 
 define("TIME_NOW", time());
 
+//set directories for smarty
+$smarty->setTemplateDir(ICEBB_ROOT.'skins/');
+$smarty->setCompileDir(ICEBB_ROOT.'skins_c/');
+$smarty->setConfigDir(ICEBB_ROOT.'inc/');
+$smarty->setCacheDir(ICEBB_ROOT.'cache/');
 
 ?>
