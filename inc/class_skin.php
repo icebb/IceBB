@@ -26,7 +26,19 @@ class skin
 
   function load_template($template)
   {
-    global $icebb,$std,$error_handler;
+    global $icebb,$std,$smarty,$error_handler;
+    
+    //make sure the template exists
+    if (file_exists("skins/{$this->skin_id}/{$template}.tpl"))
+    {
+      //load the template
+      $smarty->display("skins/{$this->skin_id}/{$template}.tpl");
+    }
+    else
+    {
+      //throw new skin error    
+    }
+
   }
 
   
