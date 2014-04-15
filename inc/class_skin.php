@@ -39,8 +39,8 @@ class skin
       //throw new skin error    
     }
 
+    $this->loaded_templates[] = $template;
   }
-
   
 
 }
