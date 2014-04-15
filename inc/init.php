@@ -15,4 +15,24 @@ if (!defined('IN_ICEBB'))
   die("Direct initialization of this file is not allowed.<br /><br />Please make sure IN_ICEBB is defined.");
 }
 
+/* Defines the root directory for IceBB.
+
+	Uncomment the below line and set the path manually
+	if you experience problems.
+
+	Always add a trailing slash to the end of the path.
+
+	* Path to your copy of IceBB
+ */
+//define('ICEBB_ROOT', "./");
+
+// Attempt autodetection
+if(!defined('ICEBB_ROOT'))
+{
+  define('ICEBB_ROOT', dirname(dirname(__FILE__))."/");
+}
+
+define("TIME_NOW", time());
+
+
 ?>
