@@ -18,10 +18,6 @@ class skin
   var $rss_link = '';
   var $rss_links = array();
   var $header_extra;
-  
-  //load Smarty
-  require_once('Smarty.class.php');
-  var $smarty = new Smarty();
 
   function load_skin($skin_id='')
   {
