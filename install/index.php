@@ -18,8 +18,8 @@
 define('IN_ICEBB'				, '1');			// to prevent external access
 
 $database_engines				= array(
+'mysqli'						=> "MySQLi (PHP 5+, MySQL 4.1+)",
 'mysql'							=> "MySQL",
-//'mysqli'						=> "MySQLi (PHP 5+, MySQL 4.1+)",
 //'postgres'					=> "PostgreSQL",
 //'sqlite'						=> "SQlite",
 );
@@ -92,7 +92,7 @@ class icebb
 <div id="welcome">
 	<div id="header">
 		<h1>Welcome</h1>
-		<div id='info'>We need some information from you before you can use IceBB</div>
+		<div id='info'>We need some information from you before you can use IceBB.</div>
 	</div>
 </div>
 
@@ -155,13 +155,13 @@ $icebb->html		= <<<EOF
 			<tr>
 				<td class='col2' width='40%'>
 					<strong>PHP Version:</strong><br />
-					<em>4.3.x+ is required</em>
+					<em>5.3.x+ is required</em>
 				</td>
 				<td class='col1'>
 EOF;
 
 $phpversion			= explode('.',phpversion());
-if(($phpversion[0]==4 && $phpversion[1]>=2) || $phpversion[0]>=5)
+if(($phpversion[0]==5 && $phpversion[1]>=3) || $phpversion[0]>=5)
 {
 	$icebb->html   .= "<span class='span'>Compatible</span>";
 }
@@ -385,7 +385,7 @@ EOF;
 				<tr>
 					<td width='40%'>
 						<strong>Database Engine</strong><br />
-						<em>MySQL (or MySQLi) is the best choice, however you may use others if you prefer</em>
+						<em>MySQLi is the best choice if you use PHP 5, however you may use others if you prefer</em>
 					</td>
 					<td>
 {$dbengine_html}
@@ -691,8 +691,8 @@ EOF;
 	{
 		global $icebb,$std,$db,$config;
 		
-        //require('../includes/classes/mysql.php');
-		$db						= new db_mysql();
+        require('../includes/database/mysqli.db.php');
+		$db						= new db_mysqli();
 		$db->prefix				= $config['db_prefix'];
 		// if I'm lucky, this will actually work
 		include('dbstructure.php');
