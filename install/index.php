@@ -19,7 +19,7 @@ define('IN_ICEBB'				, '1');			// to prevent external access
 
 $database_engines				= array(
 'mysqli'						=> "MySQLi (PHP 5+, MySQL 4.1+)",
-'mysql'							=> "MySQL",
+//'mysql'							=> "MySQL",
 //'postgres'					=> "PostgreSQL",
 //'sqlite'						=> "SQlite",
 );
