@@ -10,7 +10,7 @@ $creates[]= "CREATE TABLE `icebb_adsess` (
   `logintime` int(16) NOT NULL default '0',
   `location` varchar(64) NOT NULL default '',
   `last_action` int(16) NOT NULL default '0'
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $drops[] = "DROP TABLE IF EXISTS icebb_announcements";
 $creates[]= "CREATE TABLE `icebb_announcements` (
   `aid` int(11) NOT NULL default '0',
@@ -20,14 +20,14 @@ $creates[]= "CREATE TABLE `icebb_announcements` (
   `atitle` varchar(128) NOT NULL default '',
   `atext` TEXT NOT NULL default '',
   `aforums` varchar(64) NOT NULL default ''
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $drops[] = "DROP TABLE IF EXISTS icebb_banfilters";
 $creates[]= "CREATE TABLE `icebb_banfilters` (
   `bfid` int(11) NOT NULL,
   `type` varchar(64) NOT NULL default '',
   `value` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`bfid`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_banfilters CHANGE `bfid` `bfid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_bbcode";
 $creates[]= "CREATE TABLE `icebb_bbcode` (
@@ -37,7 +37,7 @@ $creates[]= "CREATE TABLE `icebb_bbcode` (
   `php` TEXT NOT NULL default '',
   `nosmilies` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_bbcode CHANGE `id` `id` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_buddies";
 $creates[]= "CREATE TABLE `icebb_buddies` (
@@ -46,7 +46,7 @@ $creates[]= "CREATE TABLE `icebb_buddies` (
   `type` tinyint(1) NOT NULL default '0',
   `uid` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM COMMENT='Buddies and blocked users'";
+) ENGINE=MyISAM COMMENT='Buddies and blocked users'";
 $inserts[] = "ALTER TABLE icebb_buddies CHANGE `id` `id` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_cache";
 $creates[]= "CREATE TABLE `icebb_cache` (
@@ -54,21 +54,21 @@ $creates[]= "CREATE TABLE `icebb_cache` (
   `name` varchar(64) NOT NULL default '',
   `content` longTEXT NOT NULL default '',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_cache CHANGE `id` `id` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_captcha";
 $creates[]= "CREATE TABLE `icebb_captcha` (
   `id` varchar(32) NOT NULL default '',
   `word_num` int(11) NOT NULL default '0',
   `ip` varchar(64) NOT NULL default ''
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $drops[] = "DROP TABLE IF EXISTS icebb_failed_login_attempt_block";
 $creates[]= "CREATE TABLE `icebb_failed_login_attempt_block` (
   `id` tinyint(11) NOT NULL,
   `ip` varchar(15) NOT NULL default '',
   `time` int(32) NOT NULL default '0',
   UNIQUE KEY `id` (`id`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_failed_login_attempt_block CHANGE `id` `id` tinyint(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_failedlogin_attempts";
 $creates[]= "CREATE TABLE `icebb_failedlogin_attempts` (
@@ -78,7 +78,7 @@ $creates[]= "CREATE TABLE `icebb_failedlogin_attempts` (
   `attempt_userid` int(11) NOT NULL default '0',
   `attempt_where` enum('acc','board') NOT NULL default 'acc',
   PRIMARY KEY  (`attempt_id`)
-) TYPE=MyISAM COMMENT='Failed login attempts - similar to vBulletin'";
+) ENGINE=MyISAM COMMENT='Failed login attempts - similar to vBulletin'";
 $inserts[] = "ALTER TABLE icebb_failedlogin_attempts CHANGE `attempt_id` `attempt_id` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_favorites";
 $creates[]= "CREATE TABLE `icebb_favorites` (
@@ -87,7 +87,7 @@ $creates[]= "CREATE TABLE `icebb_favorites` (
   `favtype` varchar(32) NOT NULL default '',
   `favobjid` int(11) NOT NULL default '0',
   PRIMARY KEY  (`favid`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_favorites CHANGE `favid` `favid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_favoritetopics";
 $creates[]= "CREATE TABLE `icebb_favoritetopics` (
@@ -95,14 +95,14 @@ $creates[]= "CREATE TABLE `icebb_favoritetopics` (
   `favuser` int(11) NOT NULL default '0',
   `favtopic` int(11) NOT NULL default '0',
   PRIMARY KEY  (`favid`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_favoritetopics CHANGE `favid` `favid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_forum_permgroups";
 $creates[]= "CREATE TABLE `icebb_forum_permgroups` (
   `permid` int(11) NOT NULL,
   `permname` varchar(64) NOT NULL default '',
   PRIMARY KEY  (`permid`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_forum_permgroups CHANGE `permid` `permid` int(11) NOT NULL auto_increment";
 $inserts[] = "INSERT INTO icebb_forum_permgroups VALUES('1','Administrators');";
 $inserts[] = "INSERT INTO icebb_forum_permgroups VALUES('2','Members');";
@@ -130,7 +130,7 @@ $creates[]= "CREATE TABLE `icebb_forums` (
   `lastpost_title` varchar(64) NOT NULL default '',
   `lastpost_author` varchar(64) NOT NULL default '',
   PRIMARY KEY  (`fid`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_forums CHANGE `fid` `fid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_groups";
 $creates[]= "CREATE TABLE `icebb_groups` (
@@ -152,7 +152,7 @@ $creates[]= "CREATE TABLE `icebb_groups` (
   `g_promote_posts` int(11) NOT NULL default '0',
   `g_flood_control` int(32) NOT NULL default '0',
   PRIMARY KEY  (`gid`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "INSERT INTO icebb_groups VALUES('1','Administrators','1','1','1','1','1','1','Administrators have full control of the forums.','<strong style=\\\"color:#b5133d\\\">','</strong>','1','0','2','0','0','0');";
 $inserts[] = "INSERT INTO icebb_groups VALUES('2','Members','1','0','0','0','0','2','','','','','','2','0','0','0');";
 $inserts[] = "INSERT INTO icebb_groups VALUES('3','Validating Members','1','0','0','0','0','3','','','','','','2','0','0','0');";
@@ -164,7 +164,7 @@ $creates[]= "CREATE TABLE `icebb_help_sections` (
   `hsid` int(11) NOT NULL,
   `title` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`hsid`)
-) TYPE=MyISAM COMMENT='IceBB help sections'";
+) ENGINE=MyISAM COMMENT='IceBB help sections'";
 $inserts[] = "ALTER TABLE icebb_help_sections CHANGE `hsid` `hsid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_helpbits";
 $creates[]= "CREATE TABLE `icebb_helpbits` (
@@ -173,7 +173,7 @@ $creates[]= "CREATE TABLE `icebb_helpbits` (
   `hname` TEXT NOT NULL default '',
   `htext` TEXT NOT NULL default '',
   PRIMARY KEY  (`hid`)
-) TYPE=MyISAM COMMENT='IceBB Help'";
+) ENGINE=MyISAM COMMENT='IceBB Help'";
 $inserts[] = "ALTER TABLE icebb_helpbits CHANGE `hid` `hid` int(11) NOT NULL auto_increment";
 $inserts[] = "INSERT INTO icebb_helpbits VALUES('23','1','Calendar','Not much explaining because this does nothing useful.  It\'s just for show.  It just displays a calendar.  Nothing big about this.');";
 $inserts[] = "INSERT INTO icebb_helpbits VALUES('24','1','Forgotten Passwords','First off, I would like to point out that I have never used this function.  I am gonna try my best to explain how this works.<p>Let\'s say that you know your username but cosigned your password to oblivion.  Well, this sets a new, secure password for you.  Simply click right next to the password box on the Login screen where is says \\\"Forgot your Password?\\\"  Next, enter your email address and do the word verification thing again.  You will then, from what I believe, recieve an email containing your new password.  Just enter this into the password field when logging in and you can go into your User Control Center and change it.');";
@@ -297,7 +297,7 @@ $creates[]= "CREATE TABLE `icebb_langbits` (
   `langbit_name` varchar(64) NOT NULL default '',
   `langbit_text` TEXT NOT NULL default '',
   PRIMARY KEY  (`langbit_id`)
-) TYPE=MyISAM COMMENT='IceBB Languages'";
+) ENGINE=MyISAM COMMENT='IceBB Languages'";
 $inserts[] = "ALTER TABLE icebb_langbits CHANGE `langbit_id` `langbit_id` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_langs";
 $creates[]= "CREATE TABLE `icebb_langs` (
@@ -307,7 +307,7 @@ $creates[]= "CREATE TABLE `icebb_langs` (
   `lang_charset` varchar(32) NOT NULL default '',
   `lang_is_default` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`lang_id`)
-) TYPE=MyISAM COMMENT='IceBB Languages'";
+) ENGINE=MyISAM COMMENT='IceBB Languages'";
 $inserts[] = "ALTER TABLE icebb_langs CHANGE `lang_id` `lang_id` int(11) NOT NULL auto_increment";
 $inserts[] = "INSERT INTO icebb_langs VALUES('1','en','English','','1');";
 $drops[] = "DROP TABLE IF EXISTS icebb_logs";
@@ -320,7 +320,7 @@ $creates[]= "CREATE TABLE `icebb_logs` (
   `action` TEXT NOT NULL default '',
   `forum_id` INT( 11 ) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_logs CHANGE `id` `id` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_moderators";
 $creates[]= "CREATE TABLE `icebb_moderators` (
@@ -346,14 +346,14 @@ $creates[]= "CREATE TABLE `icebb_moderators` (
   `mgroup` varchar(64) NOT NULL default '',
   `m_is_group` enum('0','1') NOT NULL default '0',
   PRIMARY KEY  (`mid`)
-) TYPE=MyISAM COMMENT='IceBB Moderators'";
+) ENGINE=MyISAM COMMENT='IceBB Moderators'";
 $inserts[] = "ALTER TABLE icebb_moderators CHANGE `mid` `mid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_plugins";
 $creates[]= "CREATE TABLE `icebb_plugins` (
   `id` int(11) NOT NULL,
   `filename` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM COMMENT='Sollievo Plugins'";
+) ENGINE=MyISAM COMMENT='Sollievo Plugins'";
 $inserts[] = "ALTER TABLE icebb_plugins CHANGE `id` `id` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_pm_posts";
 $creates[]= "CREATE TABLE `icebb_pm_posts` (
@@ -372,7 +372,7 @@ $creates[]= "CREATE TABLE `icebb_pm_posts` (
   `ptext` TEXT NOT NULL default '',
   PRIMARY KEY  (`pid`),
   FULLTEXT KEY `ptext` (`ptext`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_pm_posts CHANGE `pid` `pid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_pm_topics";
 $creates[]= "CREATE TABLE `icebb_pm_topics` (
@@ -390,7 +390,7 @@ $creates[]= "CREATE TABLE `icebb_pm_topics` (
   `pm_identifier` int(11) NOT NULL default '0',
   `deleted` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`tid`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_pm_topics CHANGE `tid` `tid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_poll_voters";
 $creates[]= "CREATE TABLE `icebb_poll_voters` (
@@ -399,7 +399,7 @@ $creates[]= "CREATE TABLE `icebb_poll_voters` (
   `voteruser` int(11) NOT NULL default '0',
   `voterip` varchar(16) NOT NULL default '',
   PRIMARY KEY  (`voterid`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_poll_voters CHANGE `voterid` `voterid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_polls";
 $creates[]= "CREATE TABLE `icebb_polls` (
@@ -409,7 +409,7 @@ $creates[]= "CREATE TABLE `icebb_polls` (
   `type` tinyint(1) NOT NULL default '0',
   `pollopt` TEXT NOT NULL default '',
   PRIMARY KEY  (`pollid`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_polls CHANGE `pollid` `pollid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_posts";
 $creates[]= "CREATE TABLE `icebb_posts` (
@@ -431,7 +431,7 @@ $creates[]= "CREATE TABLE `icebb_posts` (
   `ptext` TEXT NOT NULL default '',
   PRIMARY KEY  (`pid`),
   FULLTEXT KEY `ptext` (`ptext`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $drops[] = "DROP TABLE IF EXISTS icebb_ra_logs";
 $creates[]= "CREATE TABLE `icebb_ra_logs` (
   `id` int(11) NOT NULL default '0',
@@ -442,7 +442,7 @@ $creates[]= "CREATE TABLE `icebb_ra_logs` (
   `action` varchar(128) NOT NULL default '',
   `forum_id` INT( 11 ) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $drops[] = "DROP TABLE IF EXISTS icebb_ranks";
 $creates[]= "CREATE TABLE `icebb_ranks` (
   `rid` int(11) NOT NULL,
@@ -451,7 +451,7 @@ $creates[]= "CREATE TABLE `icebb_ranks` (
   `rpips` int(11) NOT NULL default '0',
   `rimg` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`rid`)
-) TYPE=MyISAM COMMENT='IceBB Ranks'";
+) ENGINE=MyISAM COMMENT='IceBB Ranks'";
 $inserts[] = "ALTER TABLE icebb_ranks CHANGE `rid` `rid` int(11) NOT NULL auto_increment";
 $inserts[] = "INSERT INTO icebb_ranks VALUES('1','0','Newbie','1','');";
 $inserts[] = "INSERT INTO icebb_ranks VALUES('2','10','Member','2','');";
@@ -470,7 +470,7 @@ $creates[]= "CREATE TABLE `icebb_search_results` (
   `search_uip` varchar(32) NOT NULL default '',
   `search_sort` varchar(64) NOT NULL default '',
   `search_query_cache` TEXT NOT NULL default ''
-) TYPE=MyISAM COMMENT='IceBB Search Results'";
+) ENGINE=MyISAM COMMENT='IceBB Search Results'";
 $drops[] = "DROP TABLE IF EXISTS icebb_session_data";
 $creates[]= "CREATE TABLE `icebb_session_data` (
   `sid` varchar(32) NOT NULL default '',
@@ -484,7 +484,7 @@ $creates[]= "CREATE TABLE `icebb_session_data` (
   `topic` int(11) NOT NULL default '0',
   `forum` int(11) NOT NULL default '0',
   `profile` int(11) NOT NULL default '0'
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $drops[] = "DROP TABLE IF EXISTS icebb_settings";
 $creates[]= "CREATE TABLE `icebb_settings` (
   `setting_id` int(11) NOT NULL,
@@ -499,7 +499,7 @@ $creates[]= "CREATE TABLE `icebb_settings` (
   `setting_sort` int(11) NOT NULL default '0',
   `setting_protected` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`setting_id`)
-) TYPE=MyISAM PACK_KEYS=0";
+) ENGINE=MyISAM PACK_KEYS=0";
 $inserts[] = "ALTER TABLE icebb_settings CHANGE `setting_id` `setting_id` int(11) NOT NULL auto_increment";
 $inserts[] = "INSERT INTO icebb_settings VALUES('1','1','Board Name','The name of the board','board_name','input','IceBB','IceBB','','0','1');";
 $inserts[] = "INSERT INTO icebb_settings VALUES('2','2','Board URL','The URL (web address) to your board
@@ -554,7 +554,7 @@ $creates[]= "CREATE TABLE `icebb_settings_sections` (
   `st_sort` int(11) NOT NULL default '0',
   `st_hidden` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`st_id`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "INSERT INTO icebb_settings_sections VALUES('1','General Settings','General settings, such as board name and paths','1','0');";
 $inserts[] = "INSERT INTO icebb_settings_sections VALUES('2','Advanced Options','Board URLs and paths. These shouldn\'t need to be changed unless you are changing web hosts.','2','0');";
 $inserts[] = "INSERT INTO icebb_settings_sections VALUES('3','Security','Settings that may affect the security of your board','3','0');";
@@ -572,7 +572,7 @@ $creates[]= "CREATE TABLE `icebb_skin_macros` (
   `string` varchar(255) NOT NULL default '',
   `replacement` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_skin_macros CHANGE `id` `id` int(11) NOT NULL auto_increment";
 $inserts[] = "INSERT INTO icebb_skin_macros VALUES('1','1','QUICK_REPLY','<img src=\'skins/<#SKIN#>/images/q_reply.png\' alt=\'Quick Reply\' />');";
 $inserts[] = "INSERT INTO icebb_skin_macros VALUES('2','1','ADD_REPLY','<img src=\'skins/<#SKIN#>/images/add_reply.png\' alt=\'Add Reply\' />');";
@@ -612,7 +612,7 @@ $creates[]= "CREATE TABLE `icebb_skins` (
   `skin_macro_cache` mediumTEXT NOT NULL default '',
   `smiley_set` varchar(64) NOT NULL default '',
   PRIMARY KEY  (`skin_id`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_skins CHANGE `skin_id` `skin_id` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_smilies";
 $creates[]= "CREATE TABLE `icebb_smilies` (
@@ -622,7 +622,7 @@ $creates[]= "CREATE TABLE `icebb_smilies` (
   `image` varchar(255) NOT NULL default '',
   `clickable` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_smilies CHANGE `id` `id` int(11) NOT NULL auto_increment";
 $inserts[] = "INSERT INTO icebb_smilies VALUES('1','default',':o','oh.gif','1');";
 $inserts[] = "INSERT INTO icebb_smilies VALUES('2','default','&lt;_&lt;','glare.gif','1');";
@@ -650,7 +650,7 @@ $creates[]= "CREATE TABLE `icebb_subscriptions` (
   `suid` int(11) NOT NULL default '0',
   `sforum` int(11) NOT NULL default '0',
   PRIMARY KEY  (`sid`)
-) TYPE=MyISAM COMMENT='IceBB Subscriptions'";
+) ENGINE=MyISAM COMMENT='IceBB Subscriptions'";
 $inserts[] = "ALTER TABLE icebb_subscriptions CHANGE `sid` `sid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_tagged";
 $creates[]= "CREATE TABLE `icebb_tagged` (
@@ -659,7 +659,7 @@ $creates[]= "CREATE TABLE `icebb_tagged` (
   `tag_type` varchar(255) NOT NULL default '',
   `tag_objid` int(11) NOT NULL default '0',
   `tag_time` int(11) NOT NULL default '0'
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $drops[] = "DROP TABLE IF EXISTS icebb_tags";
 $creates[]= "CREATE TABLE `icebb_tags` (
   `id` int(11) NOT NULL,
@@ -668,7 +668,7 @@ $creates[]= "CREATE TABLE `icebb_tags` (
   `count` int(11) NOT NULL default '0',
   `owner` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_tags CHANGE `id` `id` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_tasks";
 $creates[]= "CREATE TABLE `icebb_tasks` (
@@ -685,7 +685,7 @@ $creates[]= "CREATE TABLE `icebb_tasks` (
   `task_min` smallint(2) NOT NULL default '0',
   `task_enabled` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`taskid`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_tasks CHANGE `taskid` `taskid` int(11) NOT NULL auto_increment";
 $inserts[] = "INSERT INTO icebb_tasks VALUES('1','Hourly clean-out','Clean up old sessions, CAPTCHAs','cleanout','1162260794','1162264394','cleanout.task.php','0','0','1','0','1');";
 $inserts[] = "INSERT INTO icebb_tasks VALUES('2','Update RSS Feeds','Updates the RSS feeds in the forums with a feed specified','update_rss','1152839772','1152843372','update_rss.task.php','0','0','1','0','1');";
@@ -710,7 +710,7 @@ $creates[]= "CREATE TABLE `icebb_topics` (
   `is_hidden` tinyint(1) NOT NULL default '0',
   `moved_to` int(11) NOT NULL default '0',
   PRIMARY KEY  (`tid`)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $inserts[] = "ALTER TABLE icebb_topics CHANGE `tid` `tid` int(11) NOT NULL auto_increment";
 /*$drops[] = "DROP TABLE IF EXISTS icebb_topics_ratings";
 $creates[]= "CREATE TABLE `icebb_topics_ratings` (
@@ -719,7 +719,7 @@ $creates[]= "CREATE TABLE `icebb_topics_ratings` (
   `ruid` int(11) NOT NULL default '0',
   `rating` int(1) NOT NULL default '0',
   PRIMARY KEY  (`rid`)
-) TYPE=MyISAM COMMENT='IceBB Topic Ratings'";
+) ENGINE=MyISAM COMMENT='IceBB Topic Ratings'";
 $inserts[] = "ALTER TABLE icebb_topics_ratings CHANGE `rid` `rid` int(11) NOT NULL auto_increment";*/
 $drops[] = "DROP TABLE IF EXISTS icebb_uploads";
 $creates[]= "CREATE TABLE `icebb_uploads` (
@@ -730,7 +730,7 @@ $creates[]= "CREATE TABLE `icebb_uploads` (
   `uowner` int(11) NOT NULL default '0',
   `upid` int(11) NOT NULL default '0',
   PRIMARY KEY  (`uid`)
-) TYPE=MyISAM COMMENT='IceBB Uploads Table'";
+) ENGINE=MyISAM COMMENT='IceBB Uploads Table'";
 $inserts[] = "ALTER TABLE icebb_uploads CHANGE `uid` `uid` int(11) NOT NULL auto_increment";
 $drops[] = "DROP TABLE IF EXISTS icebb_users";
 $creates[]= "CREATE TABLE `icebb_users` (
@@ -784,7 +784,7 @@ $creates[]= "CREATE TABLE `icebb_users` (
   `buddies` TEXT NOT NULL default '',
   `view_smileys` enum('0','1') NOT NULL default '1',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM PACK_KEYS=0";
+) ENGINE=MyISAM PACK_KEYS=0";
 $drops[] = "DROP TABLE IF EXISTS icebb_users_validating";
 $creates[]= "CREATE TABLE `icebb_users_validating` (
   `id` varchar(32) NOT NULL default '',
@@ -792,14 +792,14 @@ $creates[]= "CREATE TABLE `icebb_users_validating` (
   `email` varchar(64) NOT NULL default '',
   `type` varchar(64) NOT NULL default '',
   `time` int(16) NOT NULL default '0'
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
 $drops[] = "DROP TABLE IF EXISTS icebb_wordfilters";
 $creates[]= "CREATE TABLE `icebb_wordfilters` (
   `bw_id` int(11) NOT NULL,
   `bw_word` varchar(255) NOT NULL default '',
   `bw_replacement` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`bw_id`)
-) TYPE=MyISAM COMMENT='IceBB Word Filters'";
+) ENGINE=MyISAM COMMENT='IceBB Word Filters'";
 $inserts[] = "ALTER TABLE icebb_wordfilters CHANGE `bw_id` `bw_id` int(11) NOT NULL auto_increment";
 
 // manually added - 02/18/08

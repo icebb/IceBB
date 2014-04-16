@@ -335,18 +335,18 @@ EOF;
 		{
 			foreach($icebb->cache['langs'] as $lang)
 			{
-				if($lang['lang_short']==$icebb->lang_id)
+				if($lang->lang_short==$icebb->lang_id)
 				{
 					$lang_options.= "\t<option value='{$lang['lang_short']}' selected='selected'>{$lang['lang_name']}</option>\n";
 				}
 				else {
-					$lang_options.= "\t<option value='{$lang['lang_short']}'>{$lang['lang_name']}</option>\n";
+					$lang_options.= "\t<option value='{$lang->lang_short}'>{$lang->lang_name}</option>\n";
 				}
 			}
 			
 			foreach($icebb->cache['langs'] as $lang)
 			{
-				if($lang['lang_is_default']=='1')
+				if($lang->lang_is_default=='1')
 				{
 					$to_replace_langbits= unserialize($lang['lang_bits_cache']);
 					if(is_array($to_replace_langbits))

@@ -31,7 +31,7 @@ require('../includes/classes/error_handler.php');
 
 require('../config.php');
 
-require('../includes/classes/timer.inc.php');
+require('../includes/classes/timer.php');
 require('../includes/database/mysql.db.php');
 
 $engine							= "db_{$config['db_engine']}";
