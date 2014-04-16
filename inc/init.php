@@ -37,11 +37,13 @@ define("TIME_NOW", time());
 require_once ICEBB_ROOT.'inc/class_error.php';
 $error_handler = new error_handler();
 
+require_once ICEBB_ROOT.'inc/functions.php';
+
 require_once ICEBB_ROOT.'inc/class_timer.php';
 $timer = new timer();
 
 //load Smarty
-require_once('Smarty.class.php');
+require_once ICEBB_ROOT.'inc/Smarty.class.php';
 $smarty = new Smarty();
 
 //set directories for smarty
