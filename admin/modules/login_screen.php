@@ -21,19 +21,6 @@ class login_screen
 		$this->lang								= $icebb->admin->learn_language('login_screen');
 		$this->html								= $icebb->admin_skin->load_template('login_screen');
 		
-		// load OpenID if it's enabled
-		if($icebb->settings['enable_openid'])
-		{
-			require('../includes/classes/openid.inc.php');
-			$this->openid						= new icebb_openid();
-			$this->openid->process_url			= $icebb->settings['board_url']."admin/index.php?act=login_screen&openid_finish=1";
-			
-			if(!empty($icebb->input['openid_finish']))
-			{
-				$this->openid->admin_finish_auth($this);
-				exit();
-			}
-		}
 		
 		$icebb->admin->page_title				= "";
 		
@@ -49,16 +36,6 @@ class login_screen
 			$this->login_form($this->lang['no_sess_found']);
 		}
 		else {
-			if($icebb->settings['enable_openid'] && !empty($icebb->input['openid_url']))
-			{
-				$openid_result					= $this->openid->try_auth($icebb->input['openid_url']);
-				if(!$openid_result)
-				{
-					$this->login_form($this->openid->auth_error);
-				}
-			
-				exit();
-			}
 		
 			$userq			= $db->query("SELECT u.*,g.g_is_admin FROM icebb_users AS u LEFT JOIN icebb_groups AS g ON u.user_group=g.gid WHERE u.username='{$icebb->input['username']}' LIMIT 1");
 			$udata			= $db->fetch_row($userq);
