@@ -61,18 +61,6 @@ icebb_main_base_url='{$icebb->settings['board_url']}index.php?';
 	
 EOF;
 
-		if($icebb->settings['enable_openid'])
-		{
-			$code .= <<<EOF
-		<fieldset>
-			<legend>{$icebb->lang['openid']}</legend>
-		
-			<input type='text' name='openid_url' id='openid_url_1' value='' class='form_textbox openid_login' tabindex='3' />
-		</fieldset>
-
-EOF;
-		}
-
 $code .= <<<EOF
 	<div id='login_screen_links'>
 		<a href='{$icebb->settings['board_url']}index.php'>Back to board</a>
